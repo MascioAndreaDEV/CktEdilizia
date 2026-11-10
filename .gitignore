@@ -1,0 +1,28 @@
+# === SEZIONE: DIPENDENZE NODE & PNPM ===
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+.pnpm-debug.log*
+
+# === SEZIONE: BUILD & DIST ===
+dist/
+frontend/dist/
+backend/dist/
+
+# === SEZIONE: VARIABILI D'AMBIENTE & SEGRETI ===
+.env
+.env.*
+!.env.example
+
+# === SEZIONE: UPLOAD UTENTI & DATABASE LOCALE ===
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.db
+*.db-journal
+
+# === SEZIONE: SISTEMA OPERATIVO & IDE ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
