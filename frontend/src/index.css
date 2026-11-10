@@ -1,111 +1,109 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* === SEZIONE 1: IMPORTAZIONE MOTORE TAILWIND CSS V4 === */
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* === SEZIONE 2: CONFIGURAZIONE @theme (PONTE TRA TAILWIND E VARIABILI CSS) === */
+/* La direttiva @theme istruisce Tailwind CSS v4 a generare automaticamente le utility classes
+   partendo dal prefisso della variabile:
+   - --color-* genera: bg-*, text-*, border-*, ring-*, ecc.
+   - --font-*  genera: font-heading e font-body */
+@theme {
+  /* Colori semantici dinamici (cambiano quando cambia data-theme) */
+  --color-primary: var(--theme-primary);
+  --color-secondary: var(--theme-secondary);
+  --color-accent: var(--theme-accent);
+  --color-on-accent: var(--theme-on-accent);
+  --color-bg: var(--theme-bg);
+  --color-surface: var(--theme-surface);
+  --color-text: var(--theme-text);
+  --color-muted: var(--theme-muted);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Famiglie tipografiche dinamiche (cambiano quando cambia data-font) */
+  --font-heading: var(--theme-font-heading);
+  --font-body: var(--theme-font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* === SEZIONE 3: PALETTE 1 (DEFAULT) - BLACK & GOLD ELEGANCE (assets/img/Elegance.jpg) === */
+/* Colori estratti da Elegance.jpg: #000000, #14213D, #FCA311, #E5E5E5, #FFFFFF */
+:root,
+[data-theme="elegance"] {
+  --theme-primary: #14213d;      /* Blu Navy profondo per header/hero/sezioni forti */
+  --theme-secondary: #000000;    /* Nero puro per contrasti netti e footer */
+  --theme-accent: #fca311;       /* Oro/Ambra Cantiere per bottoni CTA e badge 10+ anni */
+  --theme-on-accent: #000000;    /* Testo nero ad alto contrasto sopra il bottone oro */
+  --theme-bg: #ffffff;           /* Sfondo principale pulito e luminoso */
+  --theme-surface: #e5e5e5;      /* Sfondo card servizi e box form */
+  --theme-text: #14213d;         /* Testo principale scuro leggibilissimo */
+  --theme-muted: #4a5568;        /* Testo secondario / didascalie */
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+/* === SEZIONE 4: PALETTE 2 - MOONLIT MIST (assets/img/MoonList.jpg) === */
+/* Colori estratti da MoonList.jpg: #2F363A, #FFFFFF, #C5C6C0, #66939E, #546A7B */
+[data-theme="moonlit"] {
+  --theme-primary: #2f363a;      /* Grigio Ardesia scuro architettonico */
+  --theme-secondary: #546a7b;    /* Blu/Grigio acciaio per elementi secondari */
+  --theme-accent: #66939e;       /* Azzurro polvere/Ottanio per CTA e dettagli */
+  --theme-on-accent: #ffffff;    /* Testo bianco sui pulsanti accent */
+  --theme-bg: #ffffff;           /* Bianco gesso puro (perfetto per cartongesso) */
+  --theme-surface: #e8e9e6;      /* Grigio nebbia delicato derivato da #C5C6C0 */
+  --theme-text: #2f363a;         /* Testo principale antracite */
+  --theme-muted: #546a7b;        /* Testo secondario */
+}
+
+/* === SEZIONE 5: PALETTE 3 - OLIVE GARDEN FEAST (assets/img/Olive.jpg) === */
+/* Colori estratti da Olive.jpg: #606C38, #283618, #FEFAE0, #DDA15E, #BC6C25 */
+[data-theme="olive"] {
+  --theme-primary: #283618;      /* Verde Bosco scuro profondo */
+  --theme-secondary: #606c38;    /* Verde Oliva artigianale */
+  --theme-accent: #bc6c25;       /* Terracotta/Mattone caldo per le CTA */
+  --theme-on-accent: #fefae0;    /* Testo crema chiaro sui bottoni terracotta */
+  --theme-bg: #fefae0;           /* Sfondo crema/sabbia caldissimo e accogliente */
+  --theme-surface: #f4edd3;      /* Card leggermente più tonalizzate */
+  --theme-text: #283618;         /* Testo principale verde scurissimo */
+  --theme-muted: #606c38;        /* Testo secondario verde oliva */
+}
+
+/* === SEZIONE 6: PALETTE 4 - DARK SUNSET (assets/img/Sunset.jpg) === */
+/* Colori estratti da Sunset.jpg: #355C67, #FFF3B0, #E09F3E, #9E2A2B, #540B0E */
+[data-theme="sunset"] {
+  --theme-primary: #355c67;      /* Petrolio intenso */
+  --theme-secondary: #540b0e;    /* Bordeaux scuro / Mogano */
+  --theme-accent: #e09f3e;       /* Ocra dorata solare per CTA */
+  --theme-on-accent: #540b0e;    /* Testo scuro ad alto contrasto sull'ocra */
+  --theme-bg: #fffdf2;           /* Crema chiarissimo derivato da #FFF3B0 */
+  --theme-surface: #fff3b0;      /* Superficie card giallo pastello caldo */
+  --theme-text: #2b1819;         /* Testo scuro per massima leggibilità */
+  --theme-muted: #355c67;        /* Testo secondario petrolio */
+}
+
+/* === SEZIONE 7: ABBINAMENTI TIPOGRAFICI (assets/font/font.jpg) === */
+/* 1. Tecnico & Strutturale (Default): Chakra Petch (Titoli) + Roboto (Testo) */
+:root,
+[data-font="technical"] {
+  --theme-font-heading: "Chakra Petch", sans-serif;
+  --theme-font-body: "Roboto", sans-serif;
+}
+
+/* 2. Forte & Tradizionale: Oswald (Titoli) + Merriweather (Testo) */
+[data-font="traditional"] {
+  --theme-font-heading: "Oswald", sans-serif;
+  --theme-font-body: "Merriweather", serif;
+}
+
+/* 3. Moderno & Pulito: Space Grotesk (Titoli) + DM Sans (Testo) */
+[data-font="modern"] {
+  --theme-font-heading: "Space Grotesk", sans-serif;
+  --theme-font-body: "DM Sans", sans-serif;
+}
+
+/* === SEZIONE 8: REGOLE GLOBALI MOBILE-FIRST & SMOOTH SCROLL === */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  min-width: 320px;
+  min-height: 100vh;
+  /* Transizione fluida quando cambiamo palette dal Theme Switcher */
+  transition: background-color 0.25s ease, color 0.25s ease;
 }

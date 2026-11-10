@@ -1,12 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
+    <!-- === SEZIONE: META TAG BASE & VIEWPORT MOBILE-FIRST === -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- width=device-width e initial-scale=1.0 sono fondamentali per il Mobile-First:
+         impediscono allo smartphone di rimpicciolire la pagina come se fosse un desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <meta
+      name="description"
+      content="CktEdilizia - Oltre 10 anni di esperienza in cartongesso, tinteggiatura, piccola muratura e ristrutturazioni. Richiedi il tuo preventivo in 24h."
+    />
+    <title>CktEdilizia | Cartongesso, Tinteggiatura & Ristrutturazioni</title>
+
+    <!-- === SEZIONE: PRECONNECT & IMPORTAZIONE DEI 3 ABBINAMENTI GOOGLE FONTS === -->
+    <!-- Carichiamo le 3 coppie di font mostrate in assets/font/font.jpg:
+         1. Chakra Petch + Roboto (Tecnico / Strutturale)
+         2. Oswald + Merriweather (Forte / Tradizionale)
+         3. Space Grotesk + DM Sans (Moderno / Pulito) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Oswald:wght@500;600;700&family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body class="bg-bg text-text font-body antialiased selection:bg-accent selection:text-on-accent">
+    <!-- === SEZIONE: ROOT POINT DI MONTAGGIO REACT === -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
