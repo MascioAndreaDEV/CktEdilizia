@@ -1,122 +1,82 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+// === SEZIONE 1: IMPORT DEI COMPONENTI E DELLE ICONE ===
+import { Award, PaintRoller, Hammer, MessageCircle } from 'lucide-react';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+// === SEZIONE 2: COMPONENTE PRINCIPALE APP (LAYOUT MOBILE-FIRST) ===
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="min-h-screen bg-bg text-text font-body">
+      {/* === SEZIONE 3: ANTEPRIMA DIDATTICA DEL DESIGN SYSTEM === */}
+      {/* Mobile-First: px-4 py-8 e colonna singola su smartphone, espanso con md: su tablet/desktop */}
+      <main className="mx-auto flex max-w-4xl flex-col gap-6 px-4 py-8 md:py-14">
+        {/* Card Hero di Test per verificare Palette e Font */}
+        <section className="rounded-3xl bg-primary p-6 text-white shadow-xl md:p-10">
+          {/* Badge 10+ Anni di Esperienza */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-on-accent">
+            <Award className="h-4 w-4" />
+            <span>10+ Anni di Esperienza sul Campo</span>
+          </div>
+
+          {/* Titolo che usa dinamicamente font-heading */}
+          <h1 className="font-heading text-3xl font-bold uppercase leading-tight tracking-tight md:text-5xl">
+            CktEdilizia: Cartongesso, Tinteggiatura &amp; Ristrutturazioni
+          </h1>
+
+          {/* Paragrafo che usa dinamicamente font-body */}
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/85 md:text-base">
+            Precisione artigianale, cantieri puliti e tempi certi. Invia la
+            metratura della tua stanza o carica la planimetria per ricevere il
+            tuo preventivo dettagliato entro 24 ore.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+          {/* Pulsanti Touch-Friendly Mobile-First (min-h-[48px], impilati su mobile con flex-col, affiancati da sm:flex-row) */}
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              className="flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-heading text-sm font-bold uppercase tracking-wide text-on-accent shadow-md transition active:scale-95"
+            >
+              <PaintRoller className="h-4 w-4" />
+              Richiedi Preventivo in 24h
+            </button>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <a
+              href="#whatsapp"
+              className="flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 font-heading text-sm font-bold uppercase tracking-wide text-white transition hover:bg-white/20"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Scrivici su WhatsApp
+            </a>
+          </div>
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {/* Card Superficie (bg-surface) per testare il contrasto secondario della palette */}
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-primary/10 bg-surface p-5">
+            <div className="mb-2 flex items-center gap-2 font-heading text-lg font-bold uppercase text-primary">
+              <Hammer className="h-5 w-5 text-accent" />
+              <span>Specialisti del Cartongesso</span>
+            </div>
+            <p className="text-sm text-muted">
+              Controsoffitti, pareti divisorie isolanti, velette luminose LED e
+              nicchie su misura realizzate a regola d&apos;arte.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-primary/10 bg-surface p-5">
+            <div className="mb-2 flex items-center gap-2 font-heading text-lg font-bold uppercase text-primary">
+              <PaintRoller className="h-5 w-5 text-accent" />
+              <span>Tinteggiatura &amp; Finiture</span>
+            </div>
+            <p className="text-sm text-muted">
+              Stuccatura, rasatura, trattamenti antimuffa e pittura traspirante
+              o lavabile con preventivo rapido in base ai m².
+            </p>
+          </div>
+        </section>
+      </main>
+
+      {/* === SEZIONE 4: SELETTORE TEMA E FONT FLUTTUANTE (IN BASSO A SINISTRA) === */}
+      <ThemeSwitcher />
+    </div>
+  );
 }
-
-export default App
