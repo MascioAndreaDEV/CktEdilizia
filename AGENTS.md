@@ -41,27 +41,38 @@ L'agente opera in **Modalità Apprendimento Continua**. L'utente sta sviluppando
 ---
 
 <!-- ==========================================================================
-     SEZIONE 3: REGOLE DI DESIGN MOBILE-FIRST E TEMI DINAMICI
+     SEZIONE 3: REGOLE DI DESIGN MOBILE-FIRST E DESIGN SYSTEM DEFINITIVO
      ========================================================================== -->
-## 3. Regole UI/UX: Mobile-First Rigoroso
+## 3. Regole UI/UX: Mobile-First Rigoroso & Design System Scelto dal Cliente
 
 1. **Mobile-First con Tailwind CSS**:
    - Tutte le classi base (senza prefisso) devono essere pensate per schermi smartphone (`320px - 480px`), privilegiando layout a colonna singola (`flex-col`, `grid-cols-1`), spaziatura leggibile e pulsanti facilmente cliccabili col pollice (altezza minima `min-h-[44px]`).
    - I prefissi `md:` (tablet) e `lg:` (desktop) servono esclusivamente per espandere il layout su schermi più grandi.
-2. **Sistema di Temi Dinamico (In attesa di scelta definitiva del cliente)**:
-   - Utilizzare CSS Variables collegate a Tailwind CSS per permettere il cambio istantaneo tra le **4 Palette Colori** (*Black & Gold Elegance*, *Moonlit Mist*, *Olive Garden Feast*, *Dark Sunset*) e i **3 Abbinamenti Font** (*Chakra Petch/Roboto*, *Oswald/Merriweather*, *Space Grotesk/DM Sans*).
+2. **Design System Definitivo (Approvato dal Cliente)**:
+   - **Palette Ufficiale**: **Black & Gold Elegance** (`#14213D` Primary Navy, `#000000` Secondary Black, `#FCA311` Accent Gold, `#E5E5E5` Surface, `#FFFFFF` Background). Il selettore temi temporaneo (`ThemeSwitcher`) viene rimosso.
+   - **Tipografia Ufficiale**: **Space Grotesk** per i titoli (`--font-heading`) + **DM Sans** per i testi (`--font-body`).
 
 ---
 
 <!-- ==========================================================================
-     SEZIONE 4: LOGICA DI BUSINESS SPECIFICA (CKTEDILIZIA)
+     SEZIONE 4: LOGICA DI BUSINESS SPECIFICA (ALLINEAMENTO CLIENTE CKTEDILIZIA)
      ========================================================================== -->
-## 4. Requisiti Funzionali Chiave
+## 4. Requisiti Funzionali Chiave (Allineamento Questionario Cliente)
 
-- **Target**: Neo-imprenditore edile con **10+ anni di esperienza sul campo** (specializzato in cartongesso, tinteggiatura, piccola muratura e ristrutturazioni).
-- **Preventivi in 24h (Solo raccolta dati)**:
-  - Il form per tinteggiatura/lavori richiede i metri quadri ($m^2$) della stanza **oppure** l'upload del file della planimetria/foto.
-  - Non calcola un prezzo automatico a schermo, ma invia i dati e il file al backend Express + Prisma, confermando la ricezione e garantendo una quotazione reale entro 24 ore.
-- **CTA WhatsApp Sempre Presente**:
-  - Pulsante di contatto rapido WhatsApp ben visibile per prenotare sopralluoghi o chiedere informazioni immediate.
+- **Servizi Principali & Area Geografica**:
+  - Specializzazione verticale su **Tinteggiatura interno ed esterno** e **Opere in cartongesso** (con 10+ anni di esperienza sul campo).
+  - Raggio d'azione: **Roma e dintorni**.
+- **Segmenti di Clientela Target**:
+  1. Privati / Proprietari di appartamenti
+  2. B&B / Case vacanze / Investitori
+  3. Studi tecnici / Architetti / Agenzie immobiliari
+  4. Negozi / Uffici commerciali
+- **Priorità Contatti & Notifiche**:
+  - **Canale Primario**: **Chiamata telefonica diretta** (`tel:...`) in primo piano su Hero, Navbar e Sticky Bar mobile, affiancata dal contatto rapido WhatsApp.
+  - **Modulo di Contatto / Preventivo**: Richiede **Nome e Numero di Telefono**, **Indirizzo / Zona dell'immobile (Roma)**, **Metratura approssimativa ($m^2$) o numero di stanze**, e **Possibilità di caricare foto del danno o della parete** (senza data indicativa di inizio lavori).
+  - **Notifiche su WhatsApp**: Oltre al salvataggio su database tramite backend Express + Prisma + Multer, il flusso genera una notifica/messaggio riepilogativo diretto su WhatsApp.
+  - **Recapiti Configurabili**: Il numero di telefono/WhatsApp utilizza un placeholder centralizzato in un file di configurazione, pronto per essere sostituito con il numero reale del cliente.
+- **Portfolio Lavori & Credibilità**:
+  - Partenza snella con poche foto selezionate e **2-3 testimonianze reali** di clienti recenti.
+  - **Aggiornamento Autonomo**: Presenza di una funzionalità semplice (protetta da PIN) per permettere al cliente di caricare periodicamente nuove foto dei lavori svolti in autonomia.
 
